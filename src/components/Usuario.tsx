@@ -5,10 +5,12 @@ interface UsuariosProps {
     usuarios: IUser
 }
 
+
+
 const Usuario = ({ usuarios }: UsuariosProps) => {
   return (
     <>
-        <h2>{usuarios.username}</h2>
+        <h2>{usuarios.name}</h2>
     </>
   )
 }

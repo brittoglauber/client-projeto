@@ -3,24 +3,26 @@ import React, { useEffect, useState } from 'react'
 import IUser from '../types/IUser'
 import Usuario from './Usuario'
 
-const Usuarios = () => {
+interface usuariosProps {
+  usuario: IUser
+}
 
-  const [usuarios, setUsuarios] = useState<IUser[]>([])  
+const Usuarios = ({ usuario }: usuariosProps) => { 
   
+  const [usuarios, setUsuarios] = useState<IUser[]>([])
   useEffect(() => {
-    axios.get('http://localhost:5000/user')
-        .then(resposta => {
-            setUsuarios(resposta.data.results)
-        })
-        .catch(erro => {
-            console.log(erro)
-        })
-  }, [])  
+      axios.get(`http://localhost:5000/user/${usuario.id}/`)
+      .then(resposta => {
+        setUsuarios(resposta.data)
+      })
+  }, [usuario.id])
+  
+      
 
   return (
-    <>
-        usuarios[]
-    </>
+    <div>
+      <h2>{usuario.name}</h2>
+    </div>
   )
 }
 
