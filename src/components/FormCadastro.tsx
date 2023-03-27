@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function FormCadastro() {
-    const [name, setname] = useState("")
+    const [username, setUsername] = useState("")
     
-    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
  
    
     
@@ -16,7 +16,7 @@ export default function FormCadastro() {
         
         try {
             const response = await axios.post('http://localhost:5000/user',
-                JSON.stringify({ name, email }),
+                JSON.stringify({ username, password }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -48,7 +48,7 @@ export default function FormCadastro() {
                     <form  onSubmit={handleSubmit}>
                         <div>
                             <label
-                                htmlFor="name"
+                                htmlFor="username"
                                 className="block text-sm font-medium text-gray-700 undefined"
                             >
                                 Nome
@@ -56,11 +56,10 @@ export default function FormCadastro() {
                             <div className="flex flex-col items-start">
                                 <input
                                     type="text"
-                                    id="name"
-                                    
+                                    id="username"
                                     autoComplete="off"
-                                    onChange={(e) => setname(e.target.value)}
-                                    value={name}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    value={username}
                                     required
                                     className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 />
@@ -73,14 +72,14 @@ export default function FormCadastro() {
                                 htmlFor="password"
                                 className="block text-sm font-medium text-gray-700 undefined"
                             >
-                                e-mail
+                                password
                             </label>
                             <div className="flex flex-col items-start">
                                 <input
-                                    type="email"
+                                    type="password"
                                     id="email"
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    value={email}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    value={password}
                                     required
                                     name="password"
                                     className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"

@@ -20,8 +20,10 @@ const Home = () => {
       })
   }, [])
 
+  console.log(usuarios)
+
   return (
-    
+
     <div className='flex h-screen w-full'>
       <h1>Usuários</h1>
       {usuarios?.map(item =><Usuarios usuario={item} key={item.id} />)}
